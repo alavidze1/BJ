@@ -1,19 +1,30 @@
-// Build a BlackJack Game
+let count = 0;
 
-// variables representing two cards 
-let firstCard = 10
-let secondCard = 4
+// Select the count element and the saved counts element
+const countEl = document.getElementById('count-el');
+const savedCountsEl = document.getElementById('saved-counts-el');
 
-//challenge #1
-//create a new variable and set it to the sum of the two cards 
+// Function to increment the count
+function increment() {
+    count++;
+    countEl.textContent = count;
+}
 
-
-//chalenge #2 
-// code the statements below based on the conditions shown in blackjack.png from the images folder
-// your output should work in the browser's console based on changing the values assigned to the cards
-
-//starter code
-    message = "Do you want to draw a new card? 🙂"
-    message = "Wohoo! You've got Blackjack! 🥳"
-    message = "You're out of the game! 😭"
-console.log(message)
+// Function to save the count
+function save() {
+    if (count === 0) {
+        //Makes it unable to save 0
+    } else {
+        // Append the current count to the saved counts section
+        let savedCount = count + ' - ';
+        savedCountsEl.textContent += savedCount;
+        
+        // Reset the count after saving
+        count = 0;
+        countEl.textContent = count;
+        errorEl.textContent = ''; // Clear any previous error message
+    }
+}
+// Attach event listeners to the buttons
+document.getElementById('increment-btn').addEventListener('click', increment);
+document.getElementById('save-btn').addEventListener('click', save);
